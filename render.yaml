@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: pickos-parser
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:10000 --workers 2 --timeout 120
+    plan: free
+    healthCheckPath: /health
